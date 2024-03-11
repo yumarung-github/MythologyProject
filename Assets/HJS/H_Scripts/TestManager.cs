@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace HJS
@@ -9,9 +10,12 @@ namespace HJS
         [SerializeField]
         LayerMask farmzone;
         public GameObject obj;
+        public int count;
+        public float xLocalsize = 0;
+        public float zLocalsize = 0;
         void Start()
         {
-        
+
         }
 
         void Update()
@@ -22,12 +26,20 @@ namespace HJS
             {
                 Debug.Log("농사 가능");
             }
-            
-            if(Input.GetKeyDown(KeyCode.Alpha1))
+
+            if(Input.GetKeyDown(KeyCode.S))
             {
-                Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                point.z += 1.5f;
-                Instantiate(obj, point, transform.rotation);
+                for(int i = 0; i < count; i++)
+                {
+                    for(int j = 0; j < count; j++)
+                    {
+                        Instantiate(obj, new Vector3(obj.transform.localScale.x + xLocalsize, 0, obj.transform.localScale.z + zLocalsize), transform.rotation);
+                        xLocalsize += obj.transform.localScale.x; 
+                    }
+                    zLocalsize -= obj.transform.localScale.z;
+                    xLocalsize = 0;
+                }
+
             }
         }
     }
