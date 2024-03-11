@@ -9,8 +9,10 @@ public class Uimanager : MonoBehaviour
 
     [Header("메뉴 캔버스")]
     public GameObject menuCanvas;
-    [Space(2f)]
+    [Space(10f)]
     public GameObject inventory;
+
+    public List<ItemInfo> items = new List<ItemInfo>();
 
     private void Awake()
     {
