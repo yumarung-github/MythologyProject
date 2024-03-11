@@ -12,6 +12,12 @@ public class ItemInfo
     public string itemName;
     [TextArea (3, 5)]
     public string ItemDesc;
+    public ItemInfo(Sprite sprite, string itemName, string itemDesc)
+    {
+        this.sprite = sprite;
+        this.itemName = itemName;
+        ItemDesc = itemDesc;
+    }
 }
 
 public class Item : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
@@ -23,10 +29,28 @@ public class Item : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     public Vector3 itemPosition;
     public Image itemImage;
     public ItemInfo itemInfo;
-    
+    public int itemNum;
+    public int itemIndex;
 
     Color offColor;
     Color onColor;
+
+    void Awake()
+    {
+        
+        slot = transform.GetComponentInParent<Slot>();
+        itemImage = GetComponent<Image>();
+        itemPosition = slot.transform.position;
+
+        offColor = new Color(1, 1, 1, 0);
+        onColor = new Color(1, 1, 1, 1);
+
+        //UpdateItem();
+    }
+    void Start()
+    {
+        raycaster = Uimanager.instance.menuCanvas.GetComponent<GraphicRaycaster>();
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -49,25 +73,12 @@ public class Item : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         Uimanager.instance.SetEndFrameFoo(this);
         itemImage.raycastTarget = true;
     }
-
     
-
-    void Start()
-    {
-        raycaster = Uimanager.instance.menuCanvas.GetComponent<GraphicRaycaster>();
-        slot = transform.GetComponentInParent<Slot>();
-        itemImage = GetComponent<Image>();
-        itemPosition = slot.transform.position;
-
-        offColor = new Color(0, 0, 0, 0);
-        onColor = new Color(1, 1, 1, 1);
-
-        UpdateItem();
-    }
-    public void UpdateItem()
+    public void UpdateItem()//이미지 업데이트 해주는거
     {
         if (itemInfo != null)
         {
+            Debug.Log(itemInfo.itemName);
             itemImage.sprite = itemInfo.sprite;
             itemImage.color = onColor;
         }
@@ -76,9 +87,19 @@ public class Item : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
             itemImage.color = offColor;
         }
     }
-    public void UseItem()
+    public void UseItem()//사용하는거 1개면 다 사용했으니 없애고
     {
-        itemInfo = null;
-        UpdateItem();
+        if(itemNum == 1)
+        {
+            itemInfo = null;
+            itemNum--;
+            UpdateItem();
+        }
+        else if(itemNum > 1)
+        {
+            itemNum--;
+            UpdateItem();
+        }
+        
     }
 }

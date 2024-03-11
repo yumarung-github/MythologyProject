@@ -9,8 +9,11 @@ public class Uimanager : MonoBehaviour
 
     [Header("메뉴 캔버스")]
     public GameObject menuCanvas;
-    [Space(2f)]
+    [Space(10f)]
     public GameObject inventory;
+
+    [Header("테스트용 아이템들")]
+    public List<ItemInfo> testItems = new List<ItemInfo>();
 
     private void Awake()
     {
