@@ -4,22 +4,14 @@ using UnityEngine;
 
 public class tileComponent : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    public void Enter()
     {
-        if(other.TryGetComponent(out Player player))
-        {
-            Debug.Log("ccc");
-            Debug.Log(transform.GetChild(0).gameObject.name);
-            transform.GetChild(0).gameObject.SetActive(true);
-        }
+        transform.GetChild(0).gameObject.SetActive(true);
     }
 
-    private void OnTriggerExit(Collider other)
+    public void Exit()
     {
-        if (other.TryGetComponent(out Player player))
-        {
-            transform.GetChild(0).gameObject.SetActive(false);
-        }
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 }
 
