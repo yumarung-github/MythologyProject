@@ -29,22 +29,27 @@ public class Item : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     public Vector3 itemPosition;
     public Image itemImage;
     public ItemInfo itemInfo;
-    public int itemNum; 
+    public int itemNum;
+    public int itemIndex;
 
     Color offColor;
     Color onColor;
 
-    void Start()
+    void Awake()
     {
-        raycaster = Uimanager.instance.menuCanvas.GetComponent<GraphicRaycaster>();
+        
         slot = transform.GetComponentInParent<Slot>();
         itemImage = GetComponent<Image>();
         itemPosition = slot.transform.position;
 
-        offColor = new Color(0, 0, 0, 0);
+        offColor = new Color(1, 1, 1, 0);
         onColor = new Color(1, 1, 1, 1);
 
-        UpdateItem();
+        //UpdateItem();
+    }
+    void Start()
+    {
+        raycaster = Uimanager.instance.menuCanvas.GetComponent<GraphicRaycaster>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -69,10 +74,11 @@ public class Item : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         itemImage.raycastTarget = true;
     }
     
-    public void UpdateItem()
+    public void UpdateItem()//이미지 업데이트 해주는거
     {
         if (itemInfo != null)
         {
+            Debug.Log(itemInfo.itemName);
             itemImage.sprite = itemInfo.sprite;
             itemImage.color = onColor;
         }
@@ -81,9 +87,19 @@ public class Item : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
             itemImage.color = offColor;
         }
     }
-    public void UseItem()
+    public void UseItem()//사용하는거 1개면 다 사용했으니 없애고
     {
-        itemInfo = null;
-        UpdateItem();
+        if(itemNum == 1)
+        {
+            itemInfo = null;
+            itemNum--;
+            UpdateItem();
+        }
+        else if(itemNum > 1)
+        {
+            itemNum--;
+            UpdateItem();
+        }
+        
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -180,14 +180,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1505896528405314, guid: dfd3f8cbb59500946b5f981986c2a23d, type: 3}
-      insertIndex: 5
-      addedObject: {fileID: 583649340}
-    - targetCorrespondingSourceObject: {fileID: 1505896528405314, guid: dfd3f8cbb59500946b5f981986c2a23d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 583649341}
     - targetCorrespondingSourceObject: {fileID: 1505896528405314, guid: dfd3f8cbb59500946b5f981986c2a23d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 583649342}
+    - targetCorrespondingSourceObject: {fileID: 1505896528405314, guid: dfd3f8cbb59500946b5f981986c2a23d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 583649351}
   m_SourcePrefab: {fileID: 100100000, guid: dfd3f8cbb59500946b5f981986c2a23d, type: 3}
 --- !u!1 &390824760
 GameObject:
@@ -350,18 +350,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1505896528405314, guid: dfd3f8cbb59500946b5f981986c2a23d, type: 3}
   m_PrefabInstance: {fileID: 33731938}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &583649340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 583649332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4a64e1878924ca4e8c8b344641ab6bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &583649341
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -412,6 +400,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &583649351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583649332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee15301a05ca7744acc10b591088041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

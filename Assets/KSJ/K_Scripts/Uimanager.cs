@@ -12,7 +12,8 @@ public class Uimanager : MonoBehaviour
     [Space(10f)]
     public GameObject inventory;
 
-    public List<ItemInfo> items = new List<ItemInfo>();
+    [Header("테스트용 아이템들")]
+    public List<ItemInfo> testItems = new List<ItemInfo>();
 
     private void Awake()
     {
