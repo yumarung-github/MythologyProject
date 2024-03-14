@@ -10,14 +10,15 @@ public class Player : MonoBehaviour
     public tileComponent tile;
     public LayerMask farm;
     public LayerMask ground;
+    Camera cam;
     void Start()
     {
-        
+        cam = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         Vector3 direction = Vector3.forward - new Vector3(0, 2, 0);
         RaycastHit hit;
 
@@ -40,3 +41,4 @@ public class Player : MonoBehaviour
          
     }
 }
+

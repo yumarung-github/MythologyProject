@@ -29,7 +29,7 @@ public class tileComponent : MonoBehaviour
     {
         childObj.SetActive(true);
         stateUI.SetActive(true);
-        stateUI.transform.position = Camera.main.WorldToScreenPoint(transform.position);
+        stateUI.transform.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up);
     }
 
     public void Exit()
