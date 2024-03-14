@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
@@ -24,10 +25,8 @@ public class Player : MonoBehaviour
         if (Physics.Raycast(transform.position + Vector3.up, direction.normalized, out hit, 3f, farm | ground))
         {
             tileComponent temptile = hit.collider.GetComponent<tileComponent>();
-            Debug.Log(hit.collider.gameObject.layer);
             if(LayerMask.Equals(hit.collider.gameObject.layer, ground))
             {
-                Debug.Log("dsad");
                 tile?.Exit();
                 tile = null;
             }
@@ -35,7 +34,7 @@ public class Player : MonoBehaviour
             {
                 tile?.Exit();
                 tile = temptile;
-                tile.Enter();
+                tile?.Enter();
             }
         }
          

@@ -27,20 +27,22 @@ namespace HJS
                 Debug.Log("농사 가능");
             }
 
-            if(Input.GetKeyDown(KeyCode.S))
-            {
-                for(int i = 0; i < count; i++)
-                {
-                    for(int j = 0; j < count; j++)
-                    {
-                        Instantiate(obj, new Vector3(obj.transform.localScale.x + xLocalsize, 0, obj.transform.localScale.z + zLocalsize), transform.rotation);
-                        xLocalsize += obj.transform.localScale.x; 
-                    }
-                    zLocalsize -= obj.transform.localScale.z;
-                    xLocalsize = 0;
-                }
+            #region 농사타일 프리펩화로 인해 삭제
+            //if(Input.GetKeyDown(KeyCode.S))
+            //{
+            //    for(int i = 0; i < count; i++)
+            //    {
+            //        for(int j = 0; j < count; j++)
+            //        {
+            //            Instantiate(obj, new Vector3(obj.transform.localScale.x + xLocalsize, 0, obj.transform.localScale.z + zLocalsize), transform.rotation);
+            //            xLocalsize += obj.transform.localScale.x; 
+            //        }
+            //        zLocalsize -= obj.transform.localScale.z;
+            //        xLocalsize = 0;
+            //    }
 
-            }
+            //}
+            #endregion
         }
     }
 

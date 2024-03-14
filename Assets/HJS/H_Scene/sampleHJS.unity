@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -330,7 +330,7 @@ MonoBehaviour:
   farmzone:
     serializedVersion: 2
     m_Bits: 64
-  obj: {fileID: 2753159871743101825, guid: c54a67bb236f08640af0df2d78fad38a, type: 3}
+  obj: {fileID: 7166938893837262097, guid: 29ba82ba53657f74db117ac1a71a3687, type: 3}
   count: 3
   xLocalsize: 0
   zLocalsize: 0
@@ -602,8 +602,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2745113, y: 0.6505337, z: -0.27335432, w: 0.6532434}
-  m_LocalPosition: {x: -0.0021812916, y: 3.760097, z: -2.2202191}
+  m_LocalRotation: {x: -0.076900475, y: 0.7006159, z: -0.07639394, w: -0.70525724}
+  m_LocalPosition: {x: 7.627997, y: 4.1729755, z: -0.9098276}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
