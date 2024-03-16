@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,40 +10,46 @@ namespace HJS
     {
         [SerializeField]
         LayerMask farmzone;
+        int groundMask;
+        [SerializeField]
+        tileComponent tile;
         public GameObject obj;
-        public int count;
-        public float xLocalsize = 0;
-        public float zLocalsize = 0;
+        Camera cam;
+        Vector3 prevPos;
+
         void Start()
         {
-
+            cam = Camera.main;
+            prevPos = Camera.main.transform.position;
+            groundMask = LayerMask.NameToLayer("Ground");
         }
 
         void Update()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, farmzone))
+            if(Input.GetMouseButtonDown(0))
             {
-                Debug.Log("농사 가능");
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, farmzone))
+                {
+                    tileComponent temptile = hit.collider.GetComponent<tileComponent>();
+
+                    if (hit.collider.gameObject.layer == groundMask)
+                    {
+                        cam.transform.position = prevPos;
+                        tile?.Exit();
+                        tile = null;
+                    }
+                    else if (tile != temptile || tile == null)
+                    {
+                        cam.transform.position = temptile.transform.position + Vector3.up + (-Vector3.forward);
+                        cam.transform.LookAt(temptile.transform.position);
+                        tile?.Exit();
+                        tile = temptile;
+                        tile?.Enter();
+                    }
+                }
             }
-
-            #region 농사타일 프리펩화로 인해 삭제
-            //if(Input.GetKeyDown(KeyCode.S))
-            //{
-            //    for(int i = 0; i < count; i++)
-            //    {
-            //        for(int j = 0; j < count; j++)
-            //        {
-            //            Instantiate(obj, new Vector3(obj.transform.localScale.x + xLocalsize, 0, obj.transform.localScale.z + zLocalsize), transform.rotation);
-            //            xLocalsize += obj.transform.localScale.x; 
-            //        }
-            //        zLocalsize -= obj.transform.localScale.z;
-            //        xLocalsize = 0;
-            //    }
-
-            //}
-            #endregion
         }
     }
 

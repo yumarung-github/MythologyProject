@@ -120,7 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childObj: {fileID: 0}
-  stateUI: {fileID: 0}
+  stateUI: {fileID: 3218761147314678274, guid: ced6e49269f34e44fa8993397941989a, type: 3}
+  crop: {fileID: 0}
 --- !u!1 &2677904659986135146
 GameObject:
   m_ObjectHideFlags: 0

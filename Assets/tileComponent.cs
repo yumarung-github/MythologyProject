@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,10 +12,13 @@ public class tileComponent : MonoBehaviour
     [SerializeField]
     GameObject stateUI;
 
+    [SerializeField]
+    Crop crop;
+
 
     private void Awake()
     {
-        stateUI = FindObjectOfType<Image>().gameObject;
+        stateUI = FindObjectOfType<VerticalLayoutGroup>().gameObject;
     }
 
     private void Start()
@@ -29,7 +31,6 @@ public class tileComponent : MonoBehaviour
     {
         childObj.SetActive(true);
         stateUI.SetActive(true);
-        stateUI.transform.position = Camera.main.WorldToScreenPoint(transform.position + Vector3.up);
     }
 
     public void Exit()
