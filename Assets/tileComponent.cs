@@ -18,7 +18,7 @@ public class tileComponent : MonoBehaviour
 
     private void Awake()
     {
-        stateUI = FindObjectOfType<VerticalLayoutGroup>().gameObject;
+        stateUI = FindObjectOfType<HorizontalLayoutGroup>().gameObject;
     }
 
     private void Start()

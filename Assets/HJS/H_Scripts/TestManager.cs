@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace HJS
 { 
@@ -10,6 +11,7 @@ namespace HJS
     {
         [SerializeField]
         LayerMask farmzone;
+
         int groundMask;
         [SerializeField]
         tileComponent tile;
@@ -32,25 +34,34 @@ namespace HJS
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity, farmzone))
                 {
+                    Debug.Log(hit.collider.name);
                     tileComponent temptile = hit.collider.GetComponent<tileComponent>();
 
-                    if (hit.collider.gameObject.layer == groundMask)
+                    if(EventSystem.current.IsPointerOverGameObject() == false)
                     {
-                        cam.transform.position = prevPos;
-                        tile?.Exit();
-                        tile = null;
+                        if (hit.collider.gameObject.layer == groundMask)
+                        {
+                            cam.transform.position = prevPos;
+                            tile?.Exit();
+                            tile = null;
+                        }
+                        else if (tile != temptile || tile == null)
+                        {
+                            cam.transform.position = temptile.transform.position + Vector3.up + (-Vector3.forward);
+                            cam.transform.LookAt(temptile.transform.position);
+                            tile?.Exit();
+                            tile = temptile;
+                            tile?.Enter();
+                        }
                     }
-                    else if (tile != temptile || tile == null)
-                    {
-                        cam.transform.position = temptile.transform.position + Vector3.up + (-Vector3.forward);
-                        cam.transform.LookAt(temptile.transform.position);
-                        tile?.Exit();
-                        tile = temptile;
-                        tile?.Enter();
-                    }
+
                 }
             }
         }
+
+
+        public void Test() => Debug.Log("클릭");
+            
     }
 
 }
