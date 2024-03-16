@@ -20,7 +20,7 @@ public class ItemInfo
     }
 }
 
-public class Item : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class Item : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDragHandler, IEndDragHandler, IEquatable<Item>, IComparable<Item>
 {    
     public Slot slot;
     private GraphicRaycaster raycaster;
@@ -34,6 +34,7 @@ public class Item : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 
     Color offColor;
     Color onColor;
+    private string sortStandard;
 
     void Awake()
     {
@@ -44,8 +45,6 @@ public class Item : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 
         offColor = new Color(1, 1, 1, 0);
         onColor = new Color(1, 1, 1, 1);
-
-        //UpdateItem();
     }
     void Start()
     {
@@ -101,5 +100,21 @@ public class Item : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
             UpdateItem();
         }
         
+    }
+
+    public bool Equals(Item other)
+    {
+        return sortStandard.Equals(sortStandard);
+    }
+
+    public int CompareTo(Item other)
+    {
+        return sortStandard.CompareTo(other.sortStandard);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Uimanager.instance.inventory.selectedItem = this;
+        Uimanager.instance.inventory.SelectItem(this);
     }
 }

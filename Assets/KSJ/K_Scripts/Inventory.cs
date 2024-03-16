@@ -1,21 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public TextMeshProUGUI itemNameObj;
+    public TextMeshProUGUI itemNumObj;
+    public TextMeshProUGUI itemDescObj;
+
     //인벤에 넣어주는 곳
-    public List<Item> items = new List<Item>();
+    public List<Item> items = new List<Item>();//아이템슬롯 넣어주기
     public Dictionary<int, bool> invenFilledDic = new Dictionary<int, bool>();
-    //public int headInvenNum;
-    public int slotNum;
+    public int slotNum;//인벤 아이템 슬롯 갯수
+    public Item selectedItem;
 
     private void Awake()
     {
         items = transform.GetComponentsInChildren<Item>().ToList();
         slotNum = items.Count;
-        //headInvenNum = 0;
         InitEmpty();        
     }
     private void Start()
@@ -57,7 +61,7 @@ public class Inventory : MonoBehaviour
         if(foundItem == null)
         {
             int headInvenNum = HeadNumCal();
-            Debug.Log(headInvenNum);
+            Debug.Log("빈 곳 index" + headInvenNum);
             foundItem = items[headInvenNum];
 
             foundItem.itemInfo = findItem;
@@ -69,6 +73,18 @@ public class Inventory : MonoBehaviour
         //넣어준거니까 갯수는 무조건 바뀜
         foundItem.UpdateItem();//넣어줬으면 이미지 업데이트해주기.
     }
+    public void UseSelectedItem()
+    {
+        selectedItem.UseItem();
+    }
+
+    public void SelectItem(Item item)
+    {
+        itemNameObj.text = item.itemInfo.itemName;
+        itemNumObj.text = item.itemNum.ToString();
+        itemDescObj.text = item.itemInfo.ItemDesc;
+    }
+
     public void ChangeItem()
     {
 
