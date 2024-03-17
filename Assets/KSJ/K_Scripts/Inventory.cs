@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
     }
     private void Start()
     {
-        Debug.Log(Uimanager.instance.testItems[0].itemName);
+        //Debug.Log(Uimanager.instance.testItems[0].itemName);
         InputItem(Uimanager.instance.testItems[0], 1);
         InputItem(Uimanager.instance.testItems[1], 2);
         InputItem(Uimanager.instance.testItems[2], 3);
@@ -69,8 +69,11 @@ public class Inventory : MonoBehaviour
             //없으면 빈곳중에 제일 앞에 넣어주기
         }
 
-        foundItem.itemNum += number;
-        //넣어준거니까 갯수는 무조건 바뀜
+        foundItem.itemNum += number;//넣어준거니까 갯수는 무조건 바뀜
+        foundItem.itemInfo.recentIndex = DropManager.instance.recentIndex;
+        //최근 얻은 순으로 정렬하기 위함.
+        DropManager.instance.recentIndex++;
+        
         foundItem.UpdateItem();//넣어줬으면 이미지 업데이트해주기.
     }
     public void UseSelectedItem()

@@ -12,6 +12,8 @@ public class ItemInfo
     public string itemName;
     [TextArea (3, 5)]
     public string ItemDesc;
+
+    public int recentIndex;
     public ItemInfo(Sprite sprite, string itemName, string itemDesc)
     {
         this.sprite = sprite;
@@ -37,8 +39,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDrag
     private string sortStandard;
 
     void Awake()
-    {
-        
+    {        
         slot = transform.GetComponentInParent<Slot>();
         itemImage = GetComponent<Image>();
         itemPosition = slot.transform.position;
@@ -77,7 +78,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDrag
     {
         if (itemInfo != null)
         {
-            Debug.Log(itemInfo.itemName);
+            //Debug.Log(itemInfo.itemName);
             itemImage.sprite = itemInfo.sprite;
             itemImage.color = onColor;
         }
