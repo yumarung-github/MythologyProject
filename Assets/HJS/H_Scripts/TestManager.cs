@@ -9,6 +9,7 @@ namespace HJS
 { 
     public class TestManager : MonoBehaviour
     {
+        public List<Crop> cropList;
         [SerializeField]
         LayerMask farmzone;
 
@@ -60,7 +61,10 @@ namespace HJS
         }
 
 
-        public void Test() => Debug.Log("클릭");
+        public void Test(int index)
+        {
+            Instantiate(cropList[index], tile.transform.position, tile.transform.rotation);
+        }
             
     }
 
