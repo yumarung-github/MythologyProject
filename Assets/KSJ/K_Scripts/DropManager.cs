@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using UnityEngine;
 
 public class DropManager : MonoBehaviour
@@ -25,6 +27,17 @@ public class DropManager : MonoBehaviour
         //유저데이터 만들면 데이터 값으로 넣기
     }
 
+    void SaveAsCSV(List<ItemInfo> items, string path)
+    {
+        StringBuilder csv = new StringBuilder();
+        csv.AppendLine("Name,Id,Value");
 
+        foreach (ItemInfo item in items)
+        {
+            //csv.AppendLine(string.Format("{0},{1},{2}", item.itemName, item., item.value));
+        }
+
+        File.WriteAllText(path, csv.ToString());
+    }
 
 }
