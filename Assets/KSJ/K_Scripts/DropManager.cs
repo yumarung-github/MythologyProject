@@ -25,4 +25,6 @@ public class DropManager : MonoBehaviour
         //유저데이터 만들면 데이터 값으로 넣기
     }
 
+
+
 }

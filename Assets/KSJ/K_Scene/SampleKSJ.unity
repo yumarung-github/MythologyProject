@@ -480,9 +480,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!114 &101213919
 MonoBehaviour:
@@ -980,9 +981,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!114 &194270410
 MonoBehaviour:
@@ -1115,10 +1117,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef7417cb93879ca4a915239c4bef0660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemNameObj: {fileID: 0}
-  itemNumObj: {fileID: 0}
-  itemDescObj: {fileID: 0}
+  inputIndex: 0
+  itemNameObj: {fileID: 1019266846}
+  itemNumObj: {fileID: 231002732}
+  itemDescObj: {fileID: 1817692811}
   items: []
+  infos: []
   slotNum: 0
   selectedItem: {fileID: 0}
 --- !u!1 &231002729
@@ -1134,7 +1138,7 @@ GameObject:
   - component: {fileID: 231002732}
   - component: {fileID: 231002731}
   m_Layer: 5
-  m_Name: InfoName (1)
+  m_Name: InfoNum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1332,9 +1336,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!114 &255680940
 MonoBehaviour:
@@ -1585,10 +1590,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 701195199}
   - {fileID: 1019266845}
   - {fileID: 231002730}
   - {fileID: 1817692809}
+  - {fileID: 701195199}
   m_Father: {fileID: 2052269179}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1611,7 +1616,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: -1
+  m_PreferredWidth: 325
   m_PreferredHeight: -1
   m_FlexibleWidth: 1.5
   m_FlexibleHeight: -1
@@ -1916,9 +1921,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!114 &392484405
 MonoBehaviour:
@@ -2230,9 +2236,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!114 &458849359
 MonoBehaviour:
@@ -2441,9 +2448,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!1 &596072111
 GameObject:
@@ -2501,9 +2509,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!114 &596072114
 MonoBehaviour:
@@ -2652,16 +2661,22 @@ MonoBehaviour:
   testItems:
   - sprite: {fileID: 21300000, guid: 928b0f07fdd4e374cb94424a91488a53, type: 3}
     itemName: bronze ring
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
+    itemNum: 0
+    sortStandard: 
   - sprite: {fileID: 21300000, guid: 1d130991a81017b4a9b4046ef0302b0b, type: 3}
     itemName: potion
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
+    itemNum: 0
+    sortStandard: 
   - sprite: {fileID: 21300000, guid: 1211edc30b3a39d428dda9695c953aec, type: 3}
     itemName: scroll
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
+    itemNum: 0
+    sortStandard: 
 --- !u!4 &610615272
 Transform:
   m_ObjectHideFlags: 0
@@ -2715,7 +2730,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -5.0000153, y: 107}
+  m_AnchoredPosition: {x: -5, y: 107}
   m_SizeDelta: {x: -208, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &701195200
@@ -3162,7 +3177,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: -1
+  m_PreferredWidth: 0
   m_PreferredHeight: -1
   m_FlexibleWidth: 6
   m_FlexibleHeight: -1
@@ -3381,9 +3396,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!114 &819373631
 MonoBehaviour:
@@ -3479,9 +3495,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!114 &829301747
 MonoBehaviour:
@@ -3577,9 +3594,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!114 &833513774
 MonoBehaviour:
@@ -5238,9 +5256,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!114 &1219420546
 MonoBehaviour:
@@ -5336,9 +5355,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!114 &1234066403
 MonoBehaviour:
@@ -6460,9 +6480,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!114 &1588230715
 MonoBehaviour:
@@ -6558,9 +6579,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!114 &1693577709
 MonoBehaviour:
@@ -6828,9 +6850,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!1 &1753218610
 GameObject:
@@ -7182,7 +7205,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: -1
+  m_PreferredWidth: 100
   m_PreferredHeight: -1
   m_FlexibleWidth: 1
   m_FlexibleHeight: -1
@@ -7444,7 +7467,7 @@ GameObject:
   - component: {fileID: 1817692811}
   - component: {fileID: 1817692810}
   m_Layer: 5
-  m_Name: InfoName (2)
+  m_Name: InfoDesc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7678,9 +7701,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!114 &1898300044
 MonoBehaviour:
@@ -7851,9 +7875,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!114 &1956598560
 MonoBehaviour:
@@ -8245,9 +8270,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!114 &1979240278
 MonoBehaviour:
@@ -8775,9 +8801,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!114 &2072509351
 MonoBehaviour:
@@ -8911,9 +8938,10 @@ MonoBehaviour:
   itemInfo:
     sprite: {fileID: 0}
     itemName: 
-    ItemDesc: 
+    itemDesc: 
     recentIndex: 0
-  itemNum: 0
+    itemNum: 0
+    sortStandard: 
   itemIndex: 0
 --- !u!1 &2111496912
 GameObject:

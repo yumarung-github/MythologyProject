@@ -5,24 +5,49 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+public enum SORT_KIND
+{
+    NAME,
+    RECENT
+}
 [Serializable]
-public class ItemInfo
+public class ItemInfo : IComparable<ItemInfo>, IEquatable<ItemInfo>
 {
     public Sprite sprite;
     public string itemName;
     [TextArea (3, 5)]
-    public string ItemDesc;
+    public string itemDesc;
 
     public int recentIndex;
+    public int itemNum;
+
+    public string sortStandard;
+
     public ItemInfo(Sprite sprite, string itemName, string itemDesc)
     {
         this.sprite = sprite;
         this.itemName = itemName;
-        ItemDesc = itemDesc;
+        this.itemDesc = itemDesc;
+        recentIndex = DropManager.instance.recentIndex;
+        itemNum = 0;
+        sortStandard = itemName;
+    }
+    public ItemInfo()
+    {
+
+    }
+
+    public int CompareTo(ItemInfo other)
+    {
+        return sortStandard.CompareTo(other.sortStandard); 
+    }
+    public bool Equals(ItemInfo other)
+    {
+        return sortStandard.Equals(sortStandard);
     }
 }
 
-public class Item : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDragHandler, IEndDragHandler, IEquatable<Item>, IComparable<Item>
+public class Item : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDragHandler, IEndDragHandler
 {    
     public Slot slot;
     private GraphicRaycaster raycaster;
@@ -31,12 +56,10 @@ public class Item : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDrag
     public Vector3 itemPosition;
     public Image itemImage;
     public ItemInfo itemInfo;
-    public int itemNum;
     public int itemIndex;
 
     Color offColor;
     Color onColor;
-    private string sortStandard;
 
     void Awake()
     {        
@@ -44,7 +67,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDrag
         itemImage = GetComponent<Image>();
         itemPosition = slot.transform.position;
 
-        offColor = new Color(1, 1, 1, 0);
+        offColor = new Color(1, 1, 1, 1);
         onColor = new Color(1, 1, 1, 1);
     }
     void Start()
@@ -78,39 +101,35 @@ public class Item : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDrag
     {
         if (itemInfo != null)
         {
-            //Debug.Log(itemInfo.itemName);
             itemImage.sprite = itemInfo.sprite;
-            itemImage.color = onColor;
-        }
-        else
-        {
-            itemImage.color = offColor;
+            //itemImage.color = onColor;
         }
     }
     public void UseItem()//사용하는거 1개면 다 사용했으니 없애고
     {
-        if(itemNum == 1)
+        if(itemInfo.itemNum == 1)
         {
-            itemInfo = null;
-            itemNum--;
-            UpdateItem();
+            Debug.Log("아이템 비우기" + this.itemInfo.itemName);
+            itemInfo.itemNum = 0;
+            Uimanager.instance.inventory.infos.RemoveAt(itemIndex);
+            Uimanager.instance.inventory.SortInven();
+            Uimanager.instance.inventory.inputIndex--;
+            Uimanager.instance.inventory.SetInvenKey();
+            Uimanager.instance.inventory.
+                items[Uimanager.instance.inventory.inputIndex].itemInfo = null;
+            Uimanager.instance.inventory.
+                items[Uimanager.instance.inventory.inputIndex].itemImage.sprite = null;
+            //Uimanager.instance.inventory.
+            //    items[Uimanager.instance.inventory.inputIndex].itemImage.color = offColor;
         }
-        else if(itemNum > 1)
-        {
-            itemNum--;
+        else if(itemInfo.itemNum > 1)
+        {            
+            itemInfo.itemNum--;
+            Debug.Log(itemInfo.itemNum);
+            Uimanager.instance.inventory.UpdateItemNum(this);
             UpdateItem();
         }
         
-    }
-
-    public bool Equals(Item other)
-    {
-        return sortStandard.Equals(sortStandard);
-    }
-
-    public int CompareTo(Item other)
-    {
-        return sortStandard.CompareTo(other.sortStandard);
     }
 
     public void OnPointerDown(PointerEventData eventData)

@@ -42,4 +42,12 @@ public class Uimanager : MonoBehaviour
         item.transform.position = item.slot.transform.position;
         item.gameObject.SetActive(true);
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            Debug.Log("테스트");
+            inventory.InputItem(testItems[1], 3);
+        }
+    }
 }
